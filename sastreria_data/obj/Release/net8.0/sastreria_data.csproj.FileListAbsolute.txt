@@ -1,0 +1,17 @@
+D:\back-sastreria-main\sastreria_data\bin\Release\net8.0\sastreria_data.deps.json
+D:\back-sastreria-main\sastreria_data\bin\Release\net8.0\sastreria_data.runtimeconfig.json
+D:\back-sastreria-main\sastreria_data\bin\Release\net8.0\sastreria_data.dll
+D:\back-sastreria-main\sastreria_data\bin\Release\net8.0\sastreria_data.pdb
+D:\back-sastreria-main\sastreria_data\bin\Release\net8.0\sastreria_domain.dll
+D:\back-sastreria-main\sastreria_data\bin\Release\net8.0\sastreria_domain.pdb
+D:\back-sastreria-main\sastreria_data\obj\Release\net8.0\sastreria_data.csproj.AssemblyReference.cache
+D:\back-sastreria-main\sastreria_data\obj\Release\net8.0\sastreria_data.GeneratedMSBuildEditorConfig.editorconfig
+D:\back-sastreria-main\sastreria_data\obj\Release\net8.0\sastreria_data.AssemblyInfoInputs.cache
+D:\back-sastreria-main\sastreria_data\obj\Release\net8.0\sastreria_data.AssemblyInfo.cs
+D:\back-sastreria-main\sastreria_data\obj\Release\net8.0\sastreria_data.csproj.CoreCompileInputs.cache
+D:\back-sastreria-main\sastreria_data\obj\Release\net8.0\sastreri.711FD16D.Up2Date
+D:\back-sastreria-main\sastreria_data\obj\Release\net8.0\sastreria_data.dll
+D:\back-sastreria-main\sastreria_data\obj\Release\net8.0\refint\sastreria_data.dll
+D:\back-sastreria-main\sastreria_data\obj\Release\net8.0\sastreria_data.pdb
+D:\back-sastreria-main\sastreria_data\obj\Release\net8.0\sastreria_data.genruntimeconfig.cache
+D:\back-sastreria-main\sastreria_data\obj\Release\net8.0\ref\sastreria_data.dll
