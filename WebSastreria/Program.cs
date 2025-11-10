@@ -38,8 +38,7 @@ string connStr = builder.Configuration
     .GetValue<string>("ConnectionStrings:DefaultConnection");
 
 builder.Services.AddDbContext<sastreria_data.database.tables._dbContext>(
-    // Connect to SqlServer
-    (config) => config.UseSqlServer(connStr, b => b.MigrationsAssembly("WebSastreria"))
+    (config) => config.UseNpgsql(connStr, b => b.MigrationsAssembly("WebSastreria"))
     // connect to sqlite database
     // (config) => config.UseSqlite(
     //     builder.Configuration.GetConnectionString("IcLocalDb"),

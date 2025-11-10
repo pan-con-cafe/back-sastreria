@@ -26,7 +26,7 @@ public partial class Modelo
     [Column("description")]
     public string? Descripcion { get; set; }
 
-    [Column("creationdate", TypeName = "datetime")]
+    [Column("creationdate")]
     public DateTime? FechaCreacion { get; set; }
 
     //---------------------------------------------

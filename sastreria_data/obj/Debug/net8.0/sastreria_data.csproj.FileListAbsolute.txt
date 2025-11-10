@@ -9,6 +9,7 @@ D:\back-sastreria-main\sastreria_data\obj\Debug\net8.0\sastreria_data.GeneratedM
 D:\back-sastreria-main\sastreria_data\obj\Debug\net8.0\sastreria_data.AssemblyInfoInputs.cache
 D:\back-sastreria-main\sastreria_data\obj\Debug\net8.0\sastreria_data.AssemblyInfo.cs
 D:\back-sastreria-main\sastreria_data\obj\Debug\net8.0\sastreria_data.csproj.CoreCompileInputs.cache
+D:\back-sastreria-main\sastreria_data\obj\Debug\net8.0\sastreria_data.sourcelink.json
 D:\back-sastreria-main\sastreria_data\obj\Debug\net8.0\sastreri.711FD16D.Up2Date
 D:\back-sastreria-main\sastreria_data\obj\Debug\net8.0\sastreria_data.dll
 D:\back-sastreria-main\sastreria_data\obj\Debug\net8.0\refint\sastreria_data.dll

@@ -2,8 +2,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using sastreria_data.database.tables;
 
 #nullable disable
@@ -17,18 +17,18 @@ namespace WebSastreria.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("ProductVersion", "9.0.10")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("CategoriaModelo", b =>
                 {
                     b.Property<int>("CategoriasIdCategoria")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("ModelosIdModelo")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("CategoriasIdCategoria", "ModelosIdModelo");
 
@@ -41,27 +41,27 @@ namespace WebSastreria.Migrations
                 {
                     b.Property<int>("IdCategoria")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCategoria"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdCategoria"));
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasMaxLength(150)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(150)")
+                        .HasColumnType("character varying(150)")
                         .HasColumnName("description");
 
                     b.Property<bool>("Estado")
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasColumnName("estado");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasColumnName("name");
 
                     b.HasKey("IdCategoria")
@@ -74,20 +74,20 @@ namespace WebSastreria.Migrations
                 {
                     b.Property<int>("IdCitaImagen")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("IdCitaImagen");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCitaImagen"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdCitaImagen"));
 
                     b.Property<int>("IdCita")
                         .IsUnicode(false)
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("IdCita");
 
                     b.Property<string>("Url")
                         .IsRequired()
                         .IsUnicode(false)
-                        .HasColumnType("varchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("ImageUrl");
 
                     b.HasKey("IdCitaImagen");
@@ -99,33 +99,33 @@ namespace WebSastreria.Migrations
                 {
                     b.Property<int>("IdCita")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("idcita");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCita"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdCita"));
 
                     b.Property<bool?>("Estado")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true)
                         .HasColumnName("state");
 
                     b.Property<DateTime>("FechaCita")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("citafecha");
 
                     b.Property<int?>("IdCliente")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("idcliente");
 
                     b.Property<string>("Notas")
                         .HasMaxLength(200)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasColumnName("notes");
 
                     b.Property<int?>("PedidoId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("PedidoId");
 
                     b.HasKey("IdCita")
@@ -142,46 +142,46 @@ namespace WebSastreria.Migrations
                 {
                     b.Property<int>("IdCliente")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCliente"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdCliente"));
 
                     b.Property<string>("Apellido")
                         .IsRequired()
                         .HasMaxLength(70)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(70)")
+                        .HasColumnType("character varying(70)")
                         .HasColumnName("lastname");
 
                     b.Property<string>("Correo")
                         .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasColumnName("email");
 
                     b.Property<int>("IdTipoDocumento")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("idtipodocumento");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(70)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(70)")
+                        .HasColumnType("character varying(70)")
                         .HasColumnName("name");
 
                     b.Property<string>("NumeroDocumento")
                         .IsRequired()
                         .HasMaxLength(20)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(20)")
+                        .HasColumnType("character varying(20)")
                         .HasColumnName("numerodocumento");
 
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasMaxLength(13)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(13)")
+                        .HasColumnType("character varying(13)")
                         .HasColumnName("phonenumber");
 
                     b.HasKey("IdCliente")
@@ -196,42 +196,42 @@ namespace WebSastreria.Migrations
                 {
                     b.Property<int>("IdDatos")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("iddatosastreria");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDatos"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdDatos"));
 
                     b.Property<string>("Descripcion")
                         .HasMaxLength(150)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(150)")
+                        .HasColumnType("character varying(150)")
                         .HasColumnName("description");
 
                     b.Property<string>("Direccion")
                         .IsRequired()
                         .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasColumnName("address");
 
                     b.Property<string>("LogoSastreria")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasColumnName("picture");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasColumnName("name");
 
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasMaxLength(13)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(13)")
+                        .HasColumnType("character varying(13)")
                         .HasColumnName("phonenumber");
 
                     b.HasKey("IdDatos")
@@ -244,15 +244,15 @@ namespace WebSastreria.Migrations
                 {
                     b.Property<int>("IdEstado")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdEstado"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdEstado"));
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(30)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(30)")
+                        .HasColumnType("character varying(30)")
                         .HasColumnName("name");
 
                     b.HasKey("IdEstado")
@@ -265,30 +265,30 @@ namespace WebSastreria.Migrations
                 {
                     b.Property<int>("IdHorario")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("idhorario");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdHorario"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdHorario"));
 
                     b.Property<string>("Dia")
                         .IsRequired()
                         .HasMaxLength(20)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(20)")
+                        .HasColumnType("character varying(20)")
                         .HasColumnName("day");
 
                     b.Property<bool?>("Estado")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true)
                         .HasColumnName("state");
 
                     b.Property<TimeOnly>("HoraFin")
-                        .HasColumnType("time")
+                        .HasColumnType("time without time zone")
                         .HasColumnName("horafin");
 
                     b.Property<TimeOnly>("HoraInicio")
-                        .HasColumnType("time")
+                        .HasColumnType("time without time zone")
                         .HasColumnName("horainicio");
 
                     b.HasKey("IdHorario")
@@ -301,27 +301,27 @@ namespace WebSastreria.Migrations
                 {
                     b.Property<int>("IdModelo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdModelo"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdModelo"));
 
                     b.Property<string>("Descripcion")
                         .HasMaxLength(300)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(300)")
+                        .HasColumnType("character varying(300)")
                         .HasColumnName("description");
 
                     b.Property<DateTime?>("FechaCreacion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("creationdate")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasDefaultValueSql("(NOW())");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(150)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(150)")
+                        .HasColumnType("character varying(150)")
                         .HasColumnName("name");
 
                     b.HasKey("IdModelo")
@@ -334,18 +334,18 @@ namespace WebSastreria.Migrations
                 {
                     b.Property<int>("IdModeloImagen")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdModeloImagen"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdModeloImagen"));
 
                     b.Property<int>("IdModelo")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("idmodelo");
 
                     b.Property<string>("Url")
                         .IsRequired()
                         .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)")
+                        .HasColumnType("character varying(500)")
                         .HasColumnName("url");
 
                     b.HasKey("IdModeloImagen")
@@ -360,35 +360,35 @@ namespace WebSastreria.Migrations
                 {
                     b.Property<int>("IdPedido")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("idpedido");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPedido"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdPedido"));
 
                     b.Property<string>("Detalle")
                         .HasMaxLength(150)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(150)")
+                        .HasColumnType("character varying(150)")
                         .HasColumnName("details");
 
                     b.Property<DateTime?>("FechaEntrega")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("fechaentrega");
 
                     b.Property<int?>("IdCliente")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("idcliente");
 
                     b.Property<int?>("IdEstado")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("idestado");
 
                     b.Property<int?>("IdModelo")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("idmodelo");
 
                     b.Property<int?>("IdSastre")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("idsastre");
 
                     b.HasKey("IdPedido")
@@ -409,29 +409,29 @@ namespace WebSastreria.Migrations
                 {
                     b.Property<int>("IdSastre")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdSastre"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdSastre"));
 
                     b.Property<string>("Contrasenia")
                         .IsRequired()
                         .HasMaxLength(64)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(64)")
+                        .HasColumnType("character varying(64)")
                         .HasColumnName("password");
 
                     b.Property<string>("Correo")
                         .IsRequired()
                         .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasColumnName("email");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(70)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(70)")
+                        .HasColumnType("character varying(70)")
                         .HasColumnName("name");
 
                     b.HasKey("IdSastre")
@@ -444,15 +444,15 @@ namespace WebSastreria.Migrations
                 {
                     b.Property<int>("IdTipoDocumento")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdTipoDocumento"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdTipoDocumento"));
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(50)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("character varying(50)")
                         .HasColumnName("name");
 
                     b.HasKey("IdTipoDocumento")

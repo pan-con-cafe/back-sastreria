@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using sastreria_domain.entities;
+﻿using sastreria_domain.entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

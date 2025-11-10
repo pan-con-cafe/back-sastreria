@@ -4,18 +4,6 @@
         <name>WebSastreria</name>
     </assembly>
     <members>
-        <member name="T:WebSastreria.Migrations.AddModeloCategoriaRelation">
-            <inheritdoc />
-        </member>
-        <member name="M:WebSastreria.Migrations.AddModeloCategoriaRelation.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:WebSastreria.Migrations.AddModeloCategoriaRelation.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:WebSastreria.Migrations.AddModeloCategoriaRelation.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
         <member name="T:WebSastreria.Migrations.InitialCreate">
             <inheritdoc />
         </member>
