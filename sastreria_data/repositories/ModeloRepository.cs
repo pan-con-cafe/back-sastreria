@@ -91,7 +91,7 @@ namespace sastreria_data.repositories
             {
                 Nombre = modeloDomain.Nombre,
                 Descripcion = modeloDomain.Descripcion,
-                FechaCreacion = modeloDomain.FechaCreacion ?? DateTime.Now
+                FechaCreacion = modeloDomain.FechaCreacion ?? DateTime.UtcNow
             };
 
             // Asignar categorías (N:N)
