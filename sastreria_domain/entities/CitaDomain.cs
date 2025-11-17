@@ -17,6 +17,9 @@ namespace sastreria_domain.entities
 
         public PedidoDomain? Pedido { get; set; }
         public ClienteDomain? Cliente { get; set; }
+
+        public int? IdHorario { get; set; }  // Para obtener el horario
+        public string? NombreModelo { get; set; }  // Para mostrar en el correo
     }
 }
 

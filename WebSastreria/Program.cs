@@ -31,6 +31,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IEmailService, EmailService>();
+
 // string connStr = builder.Configuration
 //     .GetValue<string>("ConnectionStrings:IcLocalDb");
 

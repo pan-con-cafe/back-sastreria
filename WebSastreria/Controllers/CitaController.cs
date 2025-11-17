@@ -16,17 +16,29 @@ namespace WebSastreria.Controllers
         private readonly ICitaImagenRepository _citaImagenRepository;
         private readonly IClienteRepository _clienteRepository;
         private readonly IPedidoRepository _pedidoRepository;
+        private readonly IHorarioRepository _horarioRepository;
+        private readonly IModeloRepository _modeloRepository;
+        private readonly IEmailService _emailService;
+        private readonly ILogger<CitaController> _logger;
 
         public CitaController(
             ICitaRepository citaRepository,
             ICitaImagenRepository citaImagenRepository,
-            IClienteRepository clienteRepository, 
-            IPedidoRepository pedidoRepository)
+            IClienteRepository clienteRepository,
+            IEmailService emailService,
+            IPedidoRepository pedidoRepository,
+            IModeloRepository modeloRepository,
+            IHorarioRepository horarioRepository,
+            ILogger<CitaController> logger)
         {
             _citaRepository = citaRepository;
             _citaImagenRepository = citaImagenRepository;
             _clienteRepository = clienteRepository;
             _pedidoRepository = pedidoRepository;
+            _horarioRepository = horarioRepository;
+            _modeloRepository = modeloRepository;
+            _emailService = emailService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -62,7 +74,7 @@ namespace WebSastreria.Controllers
             var pedido = new PedidoDomain
             {
                 IdCliente = cliente.IdCliente,
-                IdEstado = 2, // En Proceso
+                IdEstado = 1, // Pendiente
                 Detalle = null,
                 FechaEntrega = null,
                 IdModelo = citaDomain.PedidoId ?? null, // Usa PedidoId si llega desde el front
@@ -81,6 +93,48 @@ namespace WebSastreria.Controllers
             };
 
             await _citaRepository.CreateAsync(nuevaCita);
+
+            // ✅ OBTENER INFO DEL HORARIO Y MODELO PARA EL CORREO
+            string horarioTexto = "Por confirmar";
+            string nombreModelo = "Modelo personalizado";
+
+            if (citaDomain.IdHorario.HasValue)
+            {
+                var horario = await _horarioRepository.GetByIdAsync(citaDomain.IdHorario.Value);
+                if (horario != null)
+                {
+                    horarioTexto = $"{horario.Dia} de {horario.HoraInicio:hh\\:mm} a {horario.HoraFin:hh\\:mm}";
+                }
+            }
+
+            if (pedido.IdModelo.HasValue)
+            {
+                var modelo = await _modeloRepository.GetByIdAsync(pedido.IdModelo.Value);
+                if (modelo != null)
+                {
+                    nombreModelo = modelo.Nombre;
+                }
+            }
+
+            // ✅ ENVIAR CORREO
+            try
+            {
+                string nombreCompleto = $"{cliente.Nombre} {cliente.Apellido}";
+
+                await _emailService.EnviarCorreoReservaAsync(
+                    cliente.Correo,
+                    nombreCompleto,
+                    nuevaCita.FechaCita,
+                    horarioTexto,
+                    nombreModelo
+                );
+
+                _logger.LogInformation($"Correo enviado a {cliente.Correo}");
+            }
+            catch (Exception emailEx)
+            {
+                _logger.LogWarning($"Error al enviar correo: {emailEx.Message}");
+            }
 
             return Ok(new
             {
