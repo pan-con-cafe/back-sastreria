@@ -52,6 +52,7 @@ namespace WebSastreria.Controllers
         }
 
         [HttpPut("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Update(int id, [FromBody] HorarioDto horarioDto)
         {
             var horarioDomain = new HorarioDomain
