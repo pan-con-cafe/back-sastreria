@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Azure;
+using Microsoft.Extensions.Configuration;
+using sastreria_domain.repositories;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using sastreria_domain.repositories;
-using SendGrid;
-using SendGrid.Helpers.Mail;
-using Microsoft.Extensions.Configuration;
 
 namespace sastreria_data.services
 {
@@ -100,6 +101,13 @@ namespace sastreria_data.services
             try
             {
                 var response = await client.SendEmailAsync(msg);
+
+                var status = response.StatusCode.ToString();
+                var body = await response.Body.ReadAsStringAsync();
+
+                Console.WriteLine($"SENDGRID STATUS: {status}");
+                Console.WriteLine($"SENDGRID BODY: {body}");
+
                 return response.IsSuccessStatusCode;
             }
             catch (Exception ex)
@@ -107,6 +115,7 @@ namespace sastreria_data.services
                 Console.WriteLine($"Error al enviar correo: {ex.Message}");
                 return false;
             }
+
         }
     }
 }
