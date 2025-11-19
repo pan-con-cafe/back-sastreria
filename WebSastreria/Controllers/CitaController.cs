@@ -82,11 +82,25 @@ namespace WebSastreria.Controllers
             };
             pedido = await _pedidoRepository.CreateAsync(pedido);
 
+            // OBTENER HORARIO Y CALCULAR FECHA REAL
+            if (!citaDomain.IdHorario.HasValue)
+                return BadRequest("Debe seleccionar un horario.");
+
+            var horario = await _horarioRepository.GetByIdAsync(citaDomain.IdHorario.Value);
+            if (horario == null)
+                return BadRequest("Horario no válido.");
+
+            // Obtener fecha del próximo día que coincida
+            DateTime fechaBase = ObtenerFechaReal(horario.Dia);
+
+            // Combinar fecha + hora
+            DateTime fechaCita = fechaBase.Date + horario.HoraInicio.ToTimeSpan();
+
             // Crear cita y asociar el pedido recién creado
             var nuevaCita = new CitaDomain
             {
                 IdCliente = cliente.IdCliente,
-                FechaCita = citaDomain.FechaCita,
+                FechaCita = fechaCita,
                 PedidoId = pedido.IdPedido, // Asocia el pedido creado
                 Estado = true,
                 Notas = ""
@@ -95,17 +109,17 @@ namespace WebSastreria.Controllers
             await _citaRepository.CreateAsync(nuevaCita);
 
             // ✅ OBTENER INFO DEL HORARIO Y MODELO PARA EL CORREO
-            string horarioTexto = "Por confirmar";
+            string horarioTexto = $"{horario.Dia} de {horario.HoraInicio:hh\\:mm} a {horario.HoraFin:hh\\:mm}";
             string nombreModelo = "Modelo personalizado";
 
-            if (citaDomain.IdHorario.HasValue)
-            {
-                var horario = await _horarioRepository.GetByIdAsync(citaDomain.IdHorario.Value);
-                if (horario != null)
-                {
-                    horarioTexto = $"{horario.Dia} de {horario.HoraInicio:hh\\:mm} a {horario.HoraFin:hh\\:mm}";
-                }
-            }
+            //if (citaDomain.IdHorario.HasValue)
+            //{
+            //    var horario = await _horarioRepository.GetByIdAsync(citaDomain.IdHorario.Value);
+            //    if (horario != null)
+            //    {
+            //        horarioTexto = $"{horario.Dia} de {horario.HoraInicio:hh\\:mm} a {horario.HoraFin:hh\\:mm}";
+            //    }
+            //}
 
             if (pedido.IdModelo.HasValue)
             {
@@ -124,7 +138,7 @@ namespace WebSastreria.Controllers
                 await _emailService.EnviarCorreoReservaAsync(
                     cliente.Correo,
                     nombreCompleto,
-                    nuevaCita.FechaCita,
+                    fechaCita,
                     horarioTexto,
                     nombreModelo
                 );
@@ -144,6 +158,35 @@ namespace WebSastreria.Controllers
             });
         }
 
+        // HELPER PARA OBTENER PRÓXIMA FECHA SEGÚN DÍA
+        private DateTime ObtenerFechaReal(string diaSemana)
+        {
+            var hoy = DateTime.Today;
+
+            var dias = new Dictionary<string, DayOfWeek>(StringComparer.OrdinalIgnoreCase)
+            {
+                { "Lunes", DayOfWeek.Monday },
+                { "Martes", DayOfWeek.Tuesday },
+                { "Miércoles", DayOfWeek.Wednesday },
+                { "Miercoles", DayOfWeek.Wednesday },
+                { "Jueves", DayOfWeek.Thursday },
+                { "Viernes", DayOfWeek.Friday },
+                { "Sábado", DayOfWeek.Saturday },
+                { "Sabado", DayOfWeek.Saturday }
+            };
+
+            if (!dias.ContainsKey(diaSemana))
+                throw new Exception($"Día inválido: {diaSemana}");
+
+            var diaObjetivo = dias[diaSemana];
+
+            int diferencia = ((int)diaObjetivo - (int)hoy.DayOfWeek + 7) % 7;
+
+            if (diferencia == 0)
+                diferencia = 7; // Si es hoy, tomamos la próxima semana
+
+            return hoy.AddDays(diferencia);
+        }
 
         [HttpGet("{idCita}/imagenes")]
         public async Task<IActionResult> GetImagenesPorCita(int idCita)
