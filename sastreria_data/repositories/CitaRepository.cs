@@ -51,10 +51,12 @@ namespace sastreria_data.repositories
 
         public async Task<CitaDomain> CreateAsync(CitaDomain citaDomain)
         {
+            var utcFecha = DateTime.SpecifyKind(citaDomain.FechaCita, DateTimeKind.Utc);
+
             var cita = new Citum
             {
                 IdCliente = citaDomain.IdCliente,
-                FechaCita = citaDomain.FechaCita,
+                FechaCita = utcFecha,
                 Estado = citaDomain.Estado,
                 Notas = citaDomain.Notas
             };
@@ -71,8 +73,10 @@ namespace sastreria_data.repositories
             var cita = await _context.Cita.FindAsync(id);
             if (cita == null) return;
 
+            var utcFecha = DateTime.SpecifyKind(citaDomain.FechaCita, DateTimeKind.Utc);
+
             cita.IdCliente = citaDomain.IdCliente;
-            cita.FechaCita = citaDomain.FechaCita;
+            cita.FechaCita = utcFecha;
             cita.Estado = citaDomain.Estado;
             cita.Notas = citaDomain.Notas;
 

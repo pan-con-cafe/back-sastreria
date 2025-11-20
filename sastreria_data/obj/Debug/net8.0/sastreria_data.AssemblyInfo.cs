@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("sastreria_data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33076e22ea3fb1e6a10c53c4914ea353466b2416")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3aaab29b8a3ba17e98689769e1eb8312a9249cad")]
 [assembly: System.Reflection.AssemblyProductAttribute("sastreria_data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("sastreria_data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,36 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\back-sastreria-main\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{CFBF32FF-BA7C-4089-93FA-5668B7F6D42E}|sastreria_data\\sastreria_data.csproj|d:\\back-sastreria-main\\sastreria_data\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CFBF32FF-BA7C-4089-93FA-5668B7F6D42E}|sastreria_data\\sastreria_data.csproj|solutionrelative:sastreria_data\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{307A2AF3-33D3-4B7E-80DD-21E4D089267C}|WebSastreria\\WebSastreria.csproj|d:\\back-sastreria-main\\websastreria\\controllers\\citacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{307A2AF3-33D3-4B7E-80DD-21E4D089267C}|WebSastreria\\WebSastreria.csproj|solutionrelative:websastreria\\controllers\\citacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{307A2AF3-33D3-4B7E-80DD-21E4D089267C}|WebSastreria\\WebSastreria.csproj|d:\\back-sastreria-main\\websastreria\\controllers\\horariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{307A2AF3-33D3-4B7E-80DD-21E4D089267C}|WebSastreria\\WebSastreria.csproj|solutionrelative:websastreria\\controllers\\horariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C8EDDFF-A6A8-4F27-B349-EDF7022A96EB}|sastreria_domain\\sastreria_domain.csproj|d:\\back-sastreria-main\\sastreria_domain\\entities\\citadomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C8EDDFF-A6A8-4F27-B349-EDF7022A96EB}|sastreria_domain\\sastreria_domain.csproj|solutionrelative:sastreria_domain\\entities\\citadomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CFBF32FF-BA7C-4089-93FA-5668B7F6D42E}|sastreria_data\\sastreria_data.csproj|d:\\back-sastreria-main\\sastreria_data\\database\\tables\\citum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CFBF32FF-BA7C-4089-93FA-5668B7F6D42E}|sastreria_data\\sastreria_data.csproj|solutionrelative:sastreria_data\\database\\tables\\citum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{307A2AF3-33D3-4B7E-80DD-21E4D089267C}|WebSastreria\\WebSastreria.csproj|d:\\back-sastreria-main\\websastreria\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{307A2AF3-33D3-4B7E-80DD-21E4D089267C}|WebSastreria\\WebSastreria.csproj|solutionrelative:websastreria\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C8EDDFF-A6A8-4F27-B349-EDF7022A96EB}|sastreria_domain\\sastreria_domain.csproj|d:\\back-sastreria-main\\sastreria_domain\\repositories\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C8EDDFF-A6A8-4F27-B349-EDF7022A96EB}|sastreria_domain\\sastreria_domain.csproj|solutionrelative:sastreria_domain\\repositories\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -38,98 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HorarioController.cs",
-              "DocumentMoniker": "D:\\back-sastreria-main\\WebSastreria\\Controllers\\HorarioController.cs",
-              "RelativeDocumentMoniker": "WebSastreria\\Controllers\\HorarioController.cs",
-              "ToolTip": "D:\\back-sastreria-main\\WebSastreria\\Controllers\\HorarioController.cs",
-              "RelativeToolTip": "WebSastreria\\Controllers\\HorarioController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T01:52:36.245Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CitaDomain.cs",
-              "DocumentMoniker": "D:\\back-sastreria-main\\sastreria_domain\\entities\\CitaDomain.cs",
-              "RelativeDocumentMoniker": "sastreria_domain\\entities\\CitaDomain.cs",
-              "ToolTip": "D:\\back-sastreria-main\\sastreria_domain\\entities\\CitaDomain.cs",
-              "RelativeToolTip": "sastreria_domain\\entities\\CitaDomain.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAABPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T23:46:43.584Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Citum.cs",
-              "DocumentMoniker": "D:\\back-sastreria-main\\sastreria_data\\database\\tables\\Citum.cs",
-              "RelativeDocumentMoniker": "sastreria_data\\database\\tables\\Citum.cs",
-              "ToolTip": "D:\\back-sastreria-main\\sastreria_data\\database\\tables\\Citum.cs",
-              "RelativeToolTip": "sastreria_data\\database\\tables\\Citum.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T23:57:15.662Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CitaController.cs",
-              "DocumentMoniker": "D:\\back-sastreria-main\\WebSastreria\\Controllers\\CitaController.cs",
-              "RelativeDocumentMoniker": "WebSastreria\\Controllers\\CitaController.cs",
-              "ToolTip": "D:\\back-sastreria-main\\WebSastreria\\Controllers\\CitaController.cs",
-              "RelativeToolTip": "WebSastreria\\Controllers\\CitaController.cs",
-              "ViewState": "AgIAAKAAAAAAAAAAAAAAwK4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T22:49:36.112Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\back-sastreria-main\\WebSastreria\\Program.cs",
-              "RelativeDocumentMoniker": "WebSastreria\\Program.cs",
-              "ToolTip": "D:\\back-sastreria-main\\WebSastreria\\Program.cs",
-              "RelativeToolTip": "WebSastreria\\Program.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACEAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T22:27:20.353Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EmailService.cs",
-              "DocumentMoniker": "D:\\back-sastreria-main\\sastreria_data\\services\\EmailService.cs",
-              "RelativeDocumentMoniker": "sastreria_data\\services\\EmailService.cs",
-              "ToolTip": "D:\\back-sastreria-main\\sastreria_data\\services\\EmailService.cs",
-              "RelativeToolTip": "sastreria_data\\services\\EmailService.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAowHUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T22:24:29.58Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IEmailService.cs",
-              "DocumentMoniker": "D:\\back-sastreria-main\\sastreria_domain\\repositories\\IEmailService.cs",
-              "RelativeDocumentMoniker": "sastreria_domain\\repositories\\IEmailService.cs",
-              "ToolTip": "D:\\back-sastreria-main\\sastreria_domain\\repositories\\IEmailService.cs",
-              "RelativeToolTip": "sastreria_domain\\repositories\\IEmailService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T22:19:43.401Z"
             }
           ]
         }
