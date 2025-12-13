@@ -58,7 +58,9 @@ namespace sastreria_data.repositories
                 IdCliente = citaDomain.IdCliente,
                 FechaCita = utcFecha,
                 Estado = citaDomain.Estado,
-                Notas = citaDomain.Notas
+                Notas = citaDomain.Notas,
+                PedidoId = citaDomain.PedidoId
+
             };
 
             _context.Cita.Add(cita);
@@ -67,7 +69,7 @@ namespace sastreria_data.repositories
             citaDomain.IdCita = cita.IdCita;
             return citaDomain;
         }
-
+               
         public async Task UpdateAsync(int id, CitaDomain citaDomain)
         {
             var cita = await _context.Cita.FindAsync(id);
