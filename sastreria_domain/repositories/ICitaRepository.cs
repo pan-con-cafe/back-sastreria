@@ -15,6 +15,9 @@ namespace sastreria_domain.repositories
         Task<CitaDomain> CreateAsync(CitaDomain citaDomain);
         Task UpdateAsync(int id, CitaDomain citaDomain);
         Task DeleteAsync(int id);
+
+        Task<CitaDomain?> GetByPedidoIdAsync(int idPedido);
+    
     }
 }
 

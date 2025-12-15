@@ -216,6 +216,16 @@ namespace WebSastreria.Controllers
             return Ok(new { message = "Imágenes agregadas correctamente." });
         }
 
+        [HttpGet("pedido/{idPedido}")]
+        public async Task<IActionResult> GetCitaByPedido(int idPedido)
+        {
+            var cita = await _citaRepository.GetByPedidoIdAsync(idPedido);
+
+            if (cita == null)
+                return NotFound();
+
+            return Ok(cita);
+        }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, CitaDomain citaDomain)

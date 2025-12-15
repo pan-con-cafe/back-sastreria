@@ -49,6 +49,25 @@ namespace sastreria_data.repositories
             };
         }
 
+        public async Task<CitaDomain?> GetByPedidoIdAsync(int idPedido)
+        {
+            var cita = await _context.Cita
+                .FirstOrDefaultAsync(c => c.PedidoId == idPedido);
+
+            if (cita == null) return null;
+
+            return new CitaDomain
+            {
+                IdCita = cita.IdCita,
+                IdCliente = cita.IdCliente,
+                FechaCita = cita.FechaCita,
+                Estado = cita.Estado,
+                Notas = cita.Notas,
+                PedidoId = cita.PedidoId
+            };
+        }
+
+
         public async Task<CitaDomain> CreateAsync(CitaDomain citaDomain)
         {
             var utcFecha = DateTime.SpecifyKind(citaDomain.FechaCita, DateTimeKind.Utc);
