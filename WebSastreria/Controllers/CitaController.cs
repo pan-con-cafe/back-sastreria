@@ -77,7 +77,7 @@ namespace WebSastreria.Controllers
                 IdEstado = 1, // Pendiente
                 Detalle = null,
                 FechaEntrega = null,
-                IdModelo = citaDomain.PedidoId ?? null, // Usa PedidoId si llega desde el front
+                IdModelo = citaDomain.IdModelo ?? null, // Usa PedidoId si llega desde el front
                 IdSastre = null
             };
             pedido = await _pedidoRepository.CreateAsync(pedido);

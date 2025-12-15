@@ -63,7 +63,7 @@ namespace sastreria_data.repositories
                 FechaCita = cita.FechaCita,
                 Estado = cita.Estado,
                 Notas = cita.Notas,
-                PedidoId = cita.PedidoId
+                PedidoId = cita.PedidoId,
             };
         }
 

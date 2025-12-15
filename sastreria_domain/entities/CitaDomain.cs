@@ -11,6 +11,7 @@ namespace sastreria_domain.entities
         public int IdCita { get; set; }
         public int? IdCliente { get; set; }
         public int? PedidoId { get; set; }
+        public int? IdModelo { get; set; }
         public DateTime FechaCita { get; set; }
         public bool? Estado { get; set; }
         public string? Notas { get; set; }
