@@ -14,6 +14,7 @@ namespace sastreria_domain.repositories
         Task<PedidoDomain> CreateAsync(PedidoDomain pedido);
         Task UpdateAsync(int id, PedidoDomain pedido);
         Task DeleteAsync(int id);
+        Task<List<PedidoDomain>> GetPagedAsync(int page, int pageSize);
     }
 
 }
