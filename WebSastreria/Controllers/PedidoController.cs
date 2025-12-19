@@ -32,7 +32,7 @@ namespace WebSastreria.Controllers
             return Ok(pedido);
         }
 
-        [HttpGet]
+        [HttpGet("paged")]
         public async Task<IActionResult> GetPaged(
             [FromQuery] int page = 1,
             [FromQuery] int pageSize = 10)
