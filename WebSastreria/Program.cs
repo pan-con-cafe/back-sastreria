@@ -52,7 +52,7 @@ builder.Services.AddDbContext<sastreria_data.database.tables._dbContext>(
 // CONFIGURACION DEL CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("origins", builder =>
+    options.AddPolicy("AllowFrontend", builder =>
     {
         builder.AllowAnyOrigin();
         builder.AllowAnyMethod(); // GET, POST, PUT, DELETE, PATCH
@@ -155,7 +155,11 @@ app.UseDeveloperExceptionPage();
 //}
 
 app.UseHttpsRedirection();
-app.UseCors("origins");
+
+app.UseStaticFiles();
+app.UseRouting();
+
+app.UseCors("AllowFrontend");
 
 
 
@@ -163,7 +167,7 @@ app.UseAuthentication(); // ¡Importante! Debe ir antes de UseAuthorization
 
 app.UseAuthorization();
 
-app.UseStaticFiles(); // Asegúrate de que esta línea esté ANTES de app.UseRouting(), si llegas a usarlo
+ // Asegúrate de que esta línea esté ANTES de app.UseRouting(), si llegas a usarlo
 
 
 app.MapControllers();
