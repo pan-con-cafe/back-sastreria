@@ -68153,3 +68153,39 @@ CREATE INDEX "IX_Pedido_idsastre" ON "Pedido" (idsastre);
 2025-11-09 19:22:53.342 -05:00 [INF] Executed DbCommand (92ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
 VALUES ('20251110002234_InitialCreate', '9.0.10');
+2026-01-22 17:02:36.449 -05:00 [INF] User profile is available. Using 'C:\Users\Castillo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-22 17:02:40.645 -05:00 [INF] Now listening on: https://localhost:7057
+2026-01-22 17:02:40.645 -05:00 [INF] Now listening on: http://localhost:5021
+2026-01-22 17:02:42.398 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-22 17:02:42.398 -05:00 [INF] Hosting environment: Development
+2026-01-22 17:02:42.398 -05:00 [INF] Content root path: D:\back-sastreria-main\WebSastreria
+2026-01-22 17:02:47.835 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7057/ - null null
+2026-01-22 17:02:51.005 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7057/ - 404 0 null 3233.2591ms
+2026-01-22 17:02:51.009 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7057/, Response status code: 404
+2026-01-22 17:02:56.059 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7057/swagger/ - null null
+2026-01-22 17:02:56.068 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7057/swagger/ - 301 0 null 8.3803ms
+2026-01-22 17:02:56.073 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7057/swagger/index.html - null null
+2026-01-22 17:02:56.431 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7057/swagger/index.html - 200 null text/html;charset=utf-8 358.936ms
+2026-01-22 17:02:56.433 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7057/swagger/swagger-ui.css - null null
+2026-01-22 17:02:56.435 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7057/swagger/index.css - null null
+2026-01-22 17:02:56.436 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7057/swagger/swagger-ui-bundle.js - null null
+2026-01-22 17:02:56.436 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7057/swagger/swagger-ui-standalone-preset.js - null null
+2026-01-22 17:02:56.741 -05:00 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2026-01-22 17:02:56.742 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7057/swagger/index.css - 200 202 text/css 306.6387ms
+2026-01-22 17:02:56.742 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7057/swagger/index.js - null null
+2026-01-22 17:02:56.743 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7057/swagger/index.js - 200 null application/javascript;charset=utf-8 0.9246ms
+2026-01-22 17:02:56.745 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7057/_vs/browserLink - null null
+2026-01-22 17:02:56.804 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7057/_framework/aspnetcore-browser-refresh.js - null null
+2026-01-22 17:02:56.947 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7057/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 143.0102ms
+2026-01-22 17:02:56.983 -05:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-01-22 17:02:56.984 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7057/swagger/swagger-ui.css - 200 152035 text/css 550.6914ms
+2026-01-22 17:02:57.247 -05:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-01-22 17:02:57.247 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7057/swagger/swagger-ui-standalone-preset.js - 200 230007 text/javascript 811.1568ms
+2026-01-22 17:02:57.558 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7057/_vs/browserLink - 200 null text/javascript; charset=UTF-8 813.1397ms
+2026-01-22 17:02:57.593 -05:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-01-22 17:02:57.593 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7057/swagger/swagger-ui-bundle.js - 200 1426001 text/javascript 1157.8326ms
+2026-01-22 17:02:57.853 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7057/swagger/v1/swagger.json - null null
+2026-01-22 17:02:58.367 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7057/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 515.3624ms
+2026-01-22 17:02:58.767 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7057/swagger/favicon-32x32.png - null null
+2026-01-22 17:02:58.769 -05:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-01-22 17:02:58.772 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7057/swagger/favicon-32x32.png - 200 628 image/png 2.6578ms

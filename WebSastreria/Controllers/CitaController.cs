@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using sastreria_data.repositories;
 using sastreria_domain.entities;
 using sastreria_domain.repositories;
+using sastreria_domain.RequestResponse;
 
 namespace WebSastreria.Controllers
 {
@@ -187,6 +188,92 @@ namespace WebSastreria.Controllers
 
             return hoy.AddDays(diferencia);
         }
+
+
+        [HttpPost("desde-pedido")]
+        public async Task<IActionResult> CrearDesdePedido(
+        [FromBody] CrearCitaDesdePedidoRequest req)
+        {
+            // 1️⃣ Validaciones básicas
+            if (req.IdCliente <= 0)
+                return BadRequest("IdCliente inválido.");
+
+            if (req.IdPedido <= 0)
+                return BadRequest("IdPedido inválido.");
+
+            if (req.IdHorario <= 0)
+                return BadRequest("IdHorario inválido.");
+
+            // 2️⃣ Validar cliente existente
+            var cliente = await _clienteRepository.GetByIdAsync(req.IdCliente);
+            if (cliente == null)
+                return BadRequest("Cliente no existe.");
+
+            // 3️⃣ Validar pedido existente
+            var pedido = await _pedidoRepository.GetByIdAsync(req.IdPedido);
+            if (pedido == null)
+                return BadRequest("Pedido no existe.");
+
+            // 4️⃣ Obtener horario
+            var horario = await _horarioRepository.GetByIdAsync(req.IdHorario);
+            if (horario == null)
+                return BadRequest("Horario no válido.");
+
+            // 5️⃣ Calcular fecha real de la cita
+            DateTime fechaBase = ObtenerFechaReal(horario.Dia);
+            DateTime fechaCita = fechaBase.Date + horario.HoraInicio.ToTimeSpan();
+
+            // 6️⃣ Crear cita
+            var nuevaCita = new CitaDomain
+            {
+                IdCliente = cliente.IdCliente,
+                PedidoId = pedido.IdPedido,
+                FechaCita = fechaCita,
+                Estado = true,
+                Notas = ""
+            };
+
+            await _citaRepository.CreateAsync(nuevaCita);
+
+            // 7️⃣ Datos para correo
+            string horarioTexto =
+                $"{horario.Dia} de {horario.HoraInicio:hh\\:mm} a {horario.HoraFin:hh\\:mm}";
+
+            string nombreModelo = "Modelo personalizado";
+
+            if (pedido.IdModelo.HasValue)
+            {
+                var modelo = await _modeloRepository.GetByIdAsync(pedido.IdModelo.Value);
+                if (modelo != null)
+                    nombreModelo = modelo.Nombre;
+            }
+
+            // 8️⃣ Enviar correo (no rompe la creación)
+            try
+            {
+                string nombreCompleto = $"{cliente.Nombre} {cliente.Apellido}";
+
+                await _emailService.EnviarCorreoReservaAsync(
+                    cliente.Correo,
+                    nombreCompleto,
+                    fechaCita,
+                    horarioTexto,
+                    nombreModelo
+                );
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning($"Error al enviar correo: {ex.Message}");
+            }
+
+            return Ok(new
+            {
+                message = "Cita creada correctamente",
+                cita = nuevaCita
+            });
+        }
+
+
 
         [HttpGet("{idCita}/imagenes")]
         public async Task<IActionResult> GetImagenesPorCita(int idCita)

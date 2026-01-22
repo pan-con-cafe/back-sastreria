@@ -191,3 +191,7 @@ D:\back-sastreria-main\WebSastreria\obj\Debug\net8.0\WebSastreria.xml
 D:\back-sastreria-main\WebSastreria\obj\Debug\net8.0\WebSastreria.pdb
 D:\back-sastreria-main\WebSastreria\obj\Debug\net8.0\WebSastreria.genruntimeconfig.cache
 D:\back-sastreria-main\WebSastreria\obj\Debug\net8.0\ref\WebSastreria.dll
+D:\back-sastreria-main\WebSastreria\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\back-sastreria-main\WebSastreria\bin\Debug\net8.0\SendGrid.dll
+D:\back-sastreria-main\WebSastreria\bin\Debug\net8.0\StarkbankEcdsa.dll
+D:\back-sastreria-main\WebSastreria\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
