@@ -32,6 +32,16 @@ namespace WebSastreria.Controllers
             return Ok(pedido);
         }
 
+        [HttpGet("paged")]
+        public async Task<IActionResult> GetPaged(
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 10)
+        {
+            var pedidos = await _pedidoRepository.GetPagedAsync(page, pageSize);
+        
+            return Ok(pedidos);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(PedidoDomain pedidoDomain)
         {

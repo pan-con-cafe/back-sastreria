@@ -53,6 +53,27 @@ namespace sastreria_data.repositories
             };
         }
 
+        public async Task<List<PedidoDomain>> GetPagedAsync(int page, int pageSize)
+        {
+            return await _context.Pedidos
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .Select(p => new PedidoDomain
+            {
+                IdPedido = p.IdPedido,
+                IdCliente = p.IdCliente,
+                IdEstado = p.IdEstado,
+                IdModelo = p.IdModelo,
+                FechaEntrega = p.FechaEntrega,
+                Detalle = p.Detalle,
+                IdSastre = p.IdSastre
+            })
+            .ToListAsync();
+
+        }
+
+
+
         public async Task<PedidoDomain> CreateAsync(PedidoDomain pedidoDomain)
         {
             var pedido = new Pedido
