@@ -11,6 +11,7 @@ namespace sastreria_domain.repositories
     public interface ICitaRepository
     {
         Task<List<CitaDomain>> GetAllAsync();
+        Task<List<CitaDomain>> GetByPedidoIdAsync(int pedidoId);
         Task<CitaDomain?> GetByIdAsync(int id);
         Task<CitaDomain> CreateAsync(CitaDomain citaDomain);
         Task UpdateAsync(int id, CitaDomain citaDomain);
