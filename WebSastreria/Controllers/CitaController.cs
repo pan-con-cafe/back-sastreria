@@ -189,6 +189,26 @@ namespace WebSastreria.Controllers
             return hoy.AddDays(diferencia);
         }
 
+        [HttpGet("por-pedido/{pedidoId}")]
+        public async Task<IActionResult> GetByPedidoId(int pedidoId)
+        {
+            var citas = await _citaRepository.GetByPedidoIdAsync(pedidoId);
+        
+            if (citas == null || !citas.Any())
+                return Ok(new List<object>());
+        
+            return Ok(citas.Select(c => new
+            {
+                idCita = c.IdCita,
+                idCliente = c.IdCliente,
+                pedidoId = c.PedidoId,
+                fechaCita = c.FechaCita,
+                estado = c.Estado,     // 🔥 CLAVE
+                notas = c.Notas,
+                idHorario = c.IdHorario
+            }));
+        }
+
 
         [HttpPost("desde-pedido")]
         public async Task<IActionResult> CrearDesdePedido(
