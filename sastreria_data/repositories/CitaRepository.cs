@@ -111,12 +111,16 @@ namespace sastreria_data.repositories
             var cita = await _context.Cita.FindAsync(id);
             if (cita == null) return;
 
-            var utcFecha = DateTime.SpecifyKind(citaDomain.FechaCita, DateTimeKind.Utc);
+            //var utcFecha = DateTime.SpecifyKind(citaDomain.FechaCita, DateTimeKind.Utc);
+            if (!string.IsNullOrWhiteSpace(citaDomain.Notas))
+            {
+                cita.Notas = citaDomain.Notas;
+            }
 
-            cita.IdCliente = citaDomain.IdCliente;
-            cita.FechaCita = utcFecha;
+            //ita.IdCliente = citaDomain.IdCliente;
+            //cita.FechaCita = utcFecha;
             cita.Estado = citaDomain.Estado;
-            cita.Notas = citaDomain.Notas;
+            //cita.Notas = citaDomain.Notas; esta arriba en el if
 
             _context.Cita.Update(cita);
             await _context.SaveChangesAsync();
