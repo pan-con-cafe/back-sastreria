@@ -49,7 +49,7 @@ namespace sastreria_data.repositories
             };
         }
 
-        public async Task<CitaDomain?> GetByPedidoIdAsync(int idPedido)
+        /*public async Task<CitaDomain?> GetByPedidoIdAsync(int idPedido)
         {
             var cita = await _context.Cita
                 .FirstOrDefaultAsync(c => c.PedidoId == idPedido);
@@ -65,6 +65,23 @@ namespace sastreria_data.repositories
                 Notas = cita.Notas,
                 PedidoId = cita.PedidoId,
             };
+        }*/
+
+        public async Task<List<CitaDomain>> GetByPedidoIdAsync(int pedidoId)
+        {
+            return await _context.Cita
+                .Where(c => c.PedidoId == pedidoId)
+                .OrderBy(c => c.FechaCita)
+                .Select(c => new CitaDomain
+                {
+                    IdCita = c.IdCita,
+                    IdCliente = c.IdCliente,
+                    PedidoId = c.PedidoId,
+                    FechaCita = c.FechaCita,
+                    Estado = c.Estado,
+                    Notas = c.Notas
+                })
+                .ToListAsync();
         }
 
 
