@@ -345,11 +345,12 @@ namespace WebSastreria.Controllers
             if (!citaDomain.PedidoId.HasValue)
                 return NoContent(); // o BadRequest si prefieres
 
-            var pedidoId = citaDomain.PedidoId.Value;
-            var pedido = await _pedidoRepository.GetByIdAsync(citaDomain.PedidoId);
+            int pedidoId = citaDomain.PedidoId.Value;
+            
+            var pedido = await _pedidoRepository.GetByIdAsync(pedidoId);
             if (pedido != null)
             {
-                var citas = await _citaRepository.GetByPedidoIdAsync(citaDomain.PedidoId);
+                var citas = await _citaRepository.GetByPedidoIdAsync(pedidoId);
             
                 if (!citas.Any())
                 {
