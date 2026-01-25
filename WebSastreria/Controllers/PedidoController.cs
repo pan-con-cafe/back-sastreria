@@ -20,7 +20,7 @@ namespace WebSastreria.Controllers
         }
         
         //-----------------------------------------------------------
-        private async Task ActualizarEstadoPedido(int pedidoId)
+        /*private async Task ActualizarEstadoPedido(int pedidoId)
         {
             var pedido = await _pedidoRepository.GetByIdAsync(pedidoId);
             if (pedido == null) return;
@@ -42,7 +42,7 @@ namespace WebSastreria.Controllers
             }
         
             await _pedidoRepository.UpdateAsync(pedido.IdPedido, pedido);
-        }
+        }*/
         //---------------------------------------------------------------
 
         [HttpGet]
