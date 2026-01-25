@@ -342,6 +342,10 @@ namespace WebSastreria.Controllers
         {
             await _citaRepository.UpdateAsync(id, citaDomain);
             //------------------------------------------------
+            if (!citaDomain.PedidoId.HasValue)
+                return NoContent(); // o BadRequest si prefieres
+
+            var pedidoId = citaDomain.PedidoId.Value;
             var pedido = await _pedidoRepository.GetByIdAsync(citaDomain.PedidoId);
             if (pedido != null)
             {
