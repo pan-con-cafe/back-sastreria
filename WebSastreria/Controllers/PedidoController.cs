@@ -77,7 +77,7 @@ namespace WebSastreria.Controllers
             return Ok(created);
         }
 
-        [HttpPost("{id}/cerrar")]
+        /*[HttpPost("{id}/cerrar")]
         public async Task<IActionResult> CerrarPedido(int id)
         {
             var pedido = await _pedidoRepository.GetByIdAsync(id);
@@ -90,6 +90,18 @@ namespace WebSastreria.Controllers
             pedido.IdEstado = 3; // Completado
             await _pedidoRepository.UpdateAsync(id, pedido);
         
+            return Ok();
+        }*/
+
+        [HttpPatch("{id}/estado")]
+        public async Task<IActionResult> CambiarEstado(int id, int nuevoEstado)
+        {
+            var pedido = await _pedidoRepository.GetByIdAsync(id);
+            if (pedido == null) return NotFound();
+        
+            pedido.IdEstado = nuevoEstado;
+        
+            await _pedidoRepository.UpdateAsync(pedido);
             return Ok();
         }
 
