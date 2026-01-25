@@ -101,7 +101,7 @@ namespace WebSastreria.Controllers
         
             pedido.IdEstado = nuevoEstado;
         
-            await _pedidoRepository.UpdateAsync(pedido);
+            await _pedidoRepository.UpdateAsync(id, pedidoDomain);
             return Ok();
         }
 
