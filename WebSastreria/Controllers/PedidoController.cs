@@ -11,10 +11,12 @@ namespace WebSastreria.Controllers
     public class PedidoController : ControllerBase
     {
         private readonly IPedidoRepository _pedidoRepository;
+        private readonly ICitaRepository _citaRepository;
 
-        public PedidoController(IPedidoRepository pedidoRepository)
+        public PedidoController(IPedidoRepository pedidoRepository, ICitaRepository citaRepository)
         {
             _pedidoRepository = pedidoRepository;
+            _citaRepository = citaRepository;
         }
         
         //-----------------------------------------------------------
@@ -74,6 +76,23 @@ namespace WebSastreria.Controllers
             var created = await _pedidoRepository.CreateAsync(pedidoDomain);
             return Ok(created);
         }
+
+        [HttpPost("{id}/cerrar")]
+        public async Task<IActionResult> CerrarPedido(int id)
+        {
+            var pedido = await _pedidoRepository.GetByIdAsync(id);
+            if (pedido == null) return NotFound();
+        
+            var citas = await _citaRepository.GetByPedidoIdAsync(id);
+            if (citas.Any(c => c.Estado == true))
+                return BadRequest("No se puede cerrar el pedido con citas pendientes.");
+        
+            pedido.IdEstado = 3; // Completado
+            await _pedidoRepository.UpdateAsync(id, pedido);
+        
+            return Ok();
+        }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, PedidoDomain pedidoDomain)
