@@ -254,6 +254,9 @@ namespace WebSastreria.Controllers
             };
 
             await _citaRepository.CreateAsync(nuevaCita);
+            //------------------------------------------
+            await ActualizarEstadoPedido(pedido.IdPedido);
+            //------------------------------------------
 
             // 7️⃣ Datos para correo
             string horarioTexto =
@@ -338,6 +341,10 @@ namespace WebSastreria.Controllers
         public async Task<IActionResult> Update(int id, CitaDomain citaDomain)
         {
             await _citaRepository.UpdateAsync(id, citaDomain);
+            //------------------------------------------------
+            await ActualizarEstadoPedido(citaDomain.PedidoId);
+            //------------------------------------------------
+            
             return NoContent();
         }
 
