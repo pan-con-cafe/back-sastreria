@@ -255,7 +255,7 @@ namespace WebSastreria.Controllers
 
             await _citaRepository.CreateAsync(nuevaCita);
             //------------------------------------------
-            await ActualizarEstadoPedido(pedido.IdPedido);
+            //await ActualizarEstadoPedido(pedido.IdPedido);
             //------------------------------------------
 
             // 7️⃣ Datos para correo
@@ -342,7 +342,27 @@ namespace WebSastreria.Controllers
         {
             await _citaRepository.UpdateAsync(id, citaDomain);
             //------------------------------------------------
-            await ActualizarEstadoPedido(citaDomain.PedidoId);
+            var pedido = await _pedidoRepository.GetByIdAsync(citaDomain.PedidoId);
+            if (pedido != null)
+            {
+                var citas = await _citaRepository.GetByPedidoIdAsync(citaDomain.PedidoId);
+            
+                if (!citas.Any())
+                {
+                    pedido.IdEstado = 1; // Pendiente
+                }
+                else if (citas.Any(c => c.Estado == false))
+                {
+                    pedido.IdEstado = 2; // En proceso
+                }
+                else
+                {
+                    pedido.IdEstado = 1; // Pendiente (solo futuras)
+                }
+            
+                await _pedidoRepository.UpdateAsync(pedido.IdPedido, pedido);
+            }
+
             //------------------------------------------------
             
             return NoContent();
