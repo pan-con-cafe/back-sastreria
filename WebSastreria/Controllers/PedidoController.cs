@@ -16,6 +16,32 @@ namespace WebSastreria.Controllers
         {
             _pedidoRepository = pedidoRepository;
         }
+        
+        //-----------------------------------------------------------
+        private async Task ActualizarEstadoPedido(int pedidoId)
+        {
+            var pedido = await _pedidoRepository.GetByIdAsync(pedidoId);
+            if (pedido == null) return;
+        
+            var citas = await _citaRepository.GetByPedidoIdAsync(pedidoId);
+        
+            if (!citas.Any())
+            {
+                pedido.IdEstado = 1; // Pendiente
+            }
+            else if (citas.Any(c => c.Estado == false))
+            {
+                // false = realizada (según tu lógica actual)
+                pedido.IdEstado = 2; // En proceso
+            }
+            else
+            {
+                pedido.IdEstado = 1; // Pendiente (solo hay citas futuras)
+            }
+        
+            await _pedidoRepository.UpdateAsync(pedido.IdPedido, pedido);
+        }
+        //---------------------------------------------------------------
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
