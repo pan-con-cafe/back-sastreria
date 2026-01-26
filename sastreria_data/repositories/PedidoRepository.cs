@@ -56,6 +56,7 @@ namespace sastreria_data.repositories
         public async Task<List<PedidoDomain>> GetPagedAsync(int page, int pageSize)
         {
             return await _context.Pedidos
+            .OrderByDescending(p => p.IdPedido)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .Select(p => new PedidoDomain
