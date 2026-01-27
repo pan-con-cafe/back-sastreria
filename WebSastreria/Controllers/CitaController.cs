@@ -292,7 +292,9 @@ namespace WebSastreria.Controllers
             return Ok(new
             {
                 message = "Cita creada correctamente",
-                cita = nuevaCita
+                //cita = nuevaCita
+                IdCita = nuevaCita.IdCita,
+                FechaHora = nuevaCita.FechaCita
             });
         }
 
