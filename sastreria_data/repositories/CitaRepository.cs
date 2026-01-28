@@ -106,7 +106,7 @@ namespace sastreria_data.repositories
             return citaDomain;
         }
                
-        public async Task UpdateAsync(int id, CitaDomain citaDomain)
+        public async Task UpdateAsync(int id, CitaDomain citaDomain citaNueva)
         {
             var cita = await _context.Cita.FindAsync(id);
             if (cita == null) return;
