@@ -339,6 +339,11 @@ namespace WebSastreria.Controllers
             return Ok(cita);
         }
 
+        public class ReprogramarCitaRequest
+        {
+            public DateTime FechaCita { get; set; }
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, CitaDomain citaDomain)
         {
@@ -375,45 +380,19 @@ namespace WebSastreria.Controllers
             return NoContent();
         }
 
-        [HttpPut("{idCita}/reprogramar")]
-        public async Task<IActionResult> ReprogramarCita(
-            int idCita,
+        [HttpPut("{id}/reprogramar")]
+        public async Task<IActionResult> Reprogramar(
+            int id,
             [FromBody] ReprogramarCitaRequest request)
         {
-            var cita = await _citaRepository.GetByIdAsync(idCita);
-            if (cita == null) return NotFound();
-        
-            var horario = await _horarioRepository.GetByIdAsync(request.IdHorario);
-            if (horario == null || !horario.State)
-                return BadRequest("Horario no disponible");
-        
-            // 🔁 Liberar horario anterior
-            if (cita.IdHorario != null)
+            await _citaRepository.UpdateAsync(id, new CitaDomain
             {
-                var horarioAnterior = await _context.Horarios
-                    .FirstOrDefaultAsync(h => h.IdHorario == cita.IdHorario);
-        
-                if (horarioAnterior != null)
-                    horarioAnterior.State = true;
-            }
-        
-            // 📅 Calcular nueva fecha
-            var fechaBase = ObtenerFechaReal(horario.Day);
-            cita.FechaCita = fechaBase.Add(TimeSpan.Parse(horario.HoraInicio));
-        
-            // 🔗 Asociar nuevo horario
-            cita.IdHorario = horario.IdHorario;
-            horario.State = false;
-
-            await _citaRepository.UpdateAsync(cita);
-            await _horarioRepository.UpdateAsync(horario);
-
-            return Ok(new
-            {
-                cita.IdCita,
-                cita.FechaCita
+                FechaCita = request.FechaCita
             });
+        
+            return NoContent();
         }
+
 
 
         [HttpDelete("{id}")]
