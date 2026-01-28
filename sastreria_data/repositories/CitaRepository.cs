@@ -106,7 +106,7 @@ namespace sastreria_data.repositories
             return citaDomain;
         }
                
-        public async Task UpdateAsync(int id, CitaDomain citaDomain citaNueva)
+        public async Task UpdateAsync(int id, CitaDomain citaDomain)
         {
             var cita = await _context.Cita.FindAsync(id);
             if (cita == null) return;
@@ -120,7 +120,7 @@ namespace sastreria_data.repositories
 
             //ita.IdCliente = citaDomain.IdCliente;
             //cita.FechaCita = utcFecha;
-            cita.FechaCita = citaNueva.FechaCita;
+            cita.FechaCita = citaDomain.FechaCita;
             cita.Estado = citaDomain.Estado;
             //cita.Notas = citaDomain.Notas; esta arriba en el if
 
