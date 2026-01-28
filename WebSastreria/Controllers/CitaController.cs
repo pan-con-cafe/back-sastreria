@@ -380,16 +380,10 @@ namespace WebSastreria.Controllers
             int idCita,
             [FromBody] ReprogramarCitaRequest request)
         {
-            var cita = await _context.Citas
-                .Include(c => c.Horario)
-                .FirstOrDefaultAsync(c => c.IdCita == idCita);
+            var cita = await _citaRepository.GetByIdAsync(idCita);
+            if (cita == null) return NotFound();
         
-            if (cita == null)
-                return NotFound();
-        
-            var horario = await _context.Horarios
-                .FirstOrDefaultAsync(h => h.IdHorario == request.IdHorario);
-        
+            var horario = await _horarioRepository.GetByIdAsync(request.IdHorario);
             if (horario == null || !horario.State)
                 return BadRequest("Horario no disponible");
         
@@ -405,15 +399,15 @@ namespace WebSastreria.Controllers
         
             // 📅 Calcular nueva fecha
             var fechaBase = ObtenerFechaReal(horario.Day);
-            cita.FechaCita = fechaBase
-                .Add(TimeSpan.Parse(horario.HoraInicio));
+            cita.FechaCita = fechaBase.Add(TimeSpan.Parse(horario.HoraInicio));
         
             // 🔗 Asociar nuevo horario
             cita.IdHorario = horario.IdHorario;
             horario.State = false;
-        
-            await _context.SaveChangesAsync();
-        
+
+            await _citaRepository.UpdateAsync(cita);
+            await _horarioRepository.UpdateAsync(horario);
+
             return Ok(new
             {
                 cita.IdCita,
