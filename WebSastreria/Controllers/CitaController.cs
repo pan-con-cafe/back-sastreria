@@ -339,11 +339,6 @@ namespace WebSastreria.Controllers
             return Ok(cita);
         }
 
-        public class ReprogramarCitaRequest
-        {
-            public DateTime FechaCita { get; set; }
-        }
-
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, CitaDomain citaDomain)
         {
