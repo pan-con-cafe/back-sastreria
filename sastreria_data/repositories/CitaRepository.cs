@@ -111,8 +111,30 @@ namespace sastreria_data.repositories
             var cita = await _context.Cita.FindAsync(id);
             if (cita == null) return;
 
-            //var utcFecha = DateTime.SpecifyKind(citaDomain.FechaCita, DateTimeKind.Utc);
+             // SOLO si viene una fecha válida
+            if (citaDomain.FechaCita != default)
+            {
+                cita.FechaCita = DateTime.SpecifyKind(
+                    citaDomain.FechaCita,
+                    DateTimeKind.Utc
+                );
+            }
+
+            // SOLO si viene estado
+            if (citaDomain.Estado.HasValue)
+            {
+                cita.Estado = citaDomain.Estado;
+            }
+
+            // SOLO si vienen notas
             if (!string.IsNullOrWhiteSpace(citaDomain.Notas))
+            {
+                cita.Notas = citaDomain.Notas;
+            }
+
+
+            //var utcFecha = DateTime.SpecifyKind(citaDomain.FechaCita, DateTimeKind.Utc);
+            /*if (!string.IsNullOrWhiteSpace(citaDomain.Notas))
             {
                 cita.Notas = citaDomain.Notas;
                 
@@ -121,7 +143,7 @@ namespace sastreria_data.repositories
             //ita.IdCliente = citaDomain.IdCliente;
             //cita.FechaCita = utcFecha;
             cita.FechaCita = citaDomain.FechaCita;
-            cita.Estado = citaDomain.Estado;
+            cita.Estado = citaDomain.Estado;*/
             //cita.Notas = citaDomain.Notas; esta arriba en el if
 
             //_context.Cita.Update(cita);
