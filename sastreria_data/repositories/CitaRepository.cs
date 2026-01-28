@@ -115,6 +115,7 @@ namespace sastreria_data.repositories
             if (!string.IsNullOrWhiteSpace(citaDomain.Notas))
             {
                 cita.Notas = citaDomain.Notas;
+                cita.FechaCita = citaNueva.FechaCita;
             }
 
             //ita.IdCliente = citaDomain.IdCliente;
@@ -122,7 +123,7 @@ namespace sastreria_data.repositories
             cita.Estado = citaDomain.Estado;
             //cita.Notas = citaDomain.Notas; esta arriba en el if
 
-            _context.Cita.Update(cita);
+            //_context.Cita.Update(cita);
             await _context.SaveChangesAsync();
         }
 
