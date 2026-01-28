@@ -1,4 +1,4 @@
 public class ReprogramarCitaRequest
 {
-    public int IdHorario { get; set; }
+    public DateTime FechaCita { get; set; }
 }
