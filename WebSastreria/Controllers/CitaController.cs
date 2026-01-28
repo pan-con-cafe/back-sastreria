@@ -375,6 +375,53 @@ namespace WebSastreria.Controllers
             return NoContent();
         }
 
+        [HttpPut("{idCita}/reprogramar")]
+        public async Task<IActionResult> ReprogramarCita(
+            int idCita,
+            [FromBody] ReprogramarCitaRequest request)
+        {
+            var cita = await _context.Citas
+                .Include(c => c.Horario)
+                .FirstOrDefaultAsync(c => c.IdCita == idCita);
+        
+            if (cita == null)
+                return NotFound();
+        
+            var horario = await _context.Horarios
+                .FirstOrDefaultAsync(h => h.IdHorario == request.IdHorario);
+        
+            if (horario == null || !horario.State)
+                return BadRequest("Horario no disponible");
+        
+            // 🔁 Liberar horario anterior
+            if (cita.IdHorario != null)
+            {
+                var horarioAnterior = await _context.Horarios
+                    .FirstOrDefaultAsync(h => h.IdHorario == cita.IdHorario);
+        
+                if (horarioAnterior != null)
+                    horarioAnterior.State = true;
+            }
+        
+            // 📅 Calcular nueva fecha
+            var fechaBase = ObtenerFechaReal(horario.Day);
+            cita.FechaCita = fechaBase
+                .Add(TimeSpan.Parse(horario.HoraInicio));
+        
+            // 🔗 Asociar nuevo horario
+            cita.IdHorario = horario.IdHorario;
+            horario.State = false;
+        
+            await _context.SaveChangesAsync();
+        
+            return Ok(new
+            {
+                cita.IdCita,
+                cita.FechaCita
+            });
+        }
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
