@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using WebSastreria.models;
 
 namespace sastreria_data.database.tables;
 
@@ -29,7 +30,9 @@ public partial class _dbContext : DbContext
 
     public virtual DbSet<Horario> Horarios { get; set; }
 
-    public virtual DbSet<MensajeContacto> MensajeContacto { get; set; }
+    public virtual DbSet<MensajeContacto> MensajeContactos { get; set; }
+
+    public DbSet<MensajeContacto> MensajeContacto { get; set; }
 
     public virtual DbSet<Modelo> Modelos { get; set; }
 
