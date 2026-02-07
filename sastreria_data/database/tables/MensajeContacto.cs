@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
+[Table("MensajeContacto")]
 public class MensajeContacto
 {
     public int Id { get; set; }
