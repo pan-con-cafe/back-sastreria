@@ -46,4 +46,26 @@ public class MensajeContactoController : ControllerBase
 
         return Ok(mensajes);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetMensaje(int id)
+    {
+        var mensaje = await _context.MensajeContacto.FindAsync(id);
+        if (mensaje == null) return NotFound();
+
+        return Ok(mensaje);
+    }
+
+    [HttpPut("{id}/leido")]
+    public async Task<IActionResult> MarcarComoLeido(int id)
+    {
+        var mensaje = await _context.MensajeContacto.FindAsync(id);
+        if (mensaje == null) return NotFound();
+
+        mensaje.Leido = true;
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
 }
