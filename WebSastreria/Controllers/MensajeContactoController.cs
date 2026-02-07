@@ -13,9 +13,9 @@ using WebSastreria.models;
 [Route("api/[controller]")]
 public class MensajeContactoController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly _dbContext _context;
 
-    public MensajeContactoController(AppDbContext context)
+    public MensajeContactoController(_dbContext context)
     {
         _context = context;
     }
