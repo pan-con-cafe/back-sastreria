@@ -390,28 +390,47 @@ namespace WebSastreria.Controllers
                 if (anterior != null)
                 {
                     anterior.Estado = true;
-                    await _horarioRepository.UpdateAsync(anterior);
+                    await _horarioRepository.UpdateAsync(
+                        anterior.IdHorario,
+                        new HorarioDomain
+                        {
+                            State = true
+                        }
+                    );
                 }
             }
         
             // nuevo horario
             var nuevo = await _horarioRepository.GetByIdAsync(request.IdHorarioNuevo);
-            if (nuevo == null || !nuevo.Estado)
+            if (nuevo == null || nuevo.Estado != true)
                 return BadRequest("Horario no disponible");
         
             // ocupar horario nuevo
             nuevo.Estado = false;
-            await _horarioRepository.UpdateAsync(nuevo);
+            await _horarioRepository.UpdateAsync(
+                nuevo.IdHorario,
+                new HorarioDomain
+                {
+                    State = true
+                }
+            );
         
             // 🧠 calcular fecha real
-            cita.FechaCita = CalcularFechaCita(
+            cita.FechaCita = ObtenerFechaReal(
                 nuevo.Dia,
                 nuevo.HoraInicio
             );
         
             cita.IdHorario = nuevo.IdHorario;
         
-            await _citaRepository.UpdateAsync(cita);
+            await _citaRepository.UpdateAsync(
+                cita.IdCita,
+                new CitaDomain
+                {
+                    FechaCita = nuevaFecha,
+                    IdHorario = nuevo.IdHorario
+                }
+            );
         
             return NoContent();
         }
