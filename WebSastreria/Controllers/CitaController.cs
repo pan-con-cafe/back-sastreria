@@ -449,7 +449,7 @@ namespace WebSastreria.Controllers
             // 🧠 calcular fecha real
             cita.FechaCita = CalcularFechaCita(
                 nuevo.Dia,
-                nuevo.HoraInicio
+                nuevo.HoraInicio.ToTimeSpan()
             );
         
             cita.IdHorario = nuevo.IdHorario;
