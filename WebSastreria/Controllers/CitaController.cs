@@ -375,6 +375,37 @@ namespace WebSastreria.Controllers
             return NoContent();
         }
 
+        private DateTime CalcularFechaCita(string dia, TimeSpan horaInicio)
+        {
+            var today = DateTime.Today;
+        
+            var map = new Dictionary<string, DayOfWeek>
+            {
+                { "L", DayOfWeek.Monday },
+                { "M", DayOfWeek.Tuesday },
+                { "X", DayOfWeek.Wednesday },
+                { "J", DayOfWeek.Thursday },
+                { "V", DayOfWeek.Friday },
+                { "S", DayOfWeek.Saturday },
+                { "Lunes", DayOfWeek.Monday },
+                { "Martes", DayOfWeek.Tuesday },
+                { "Miércoles", DayOfWeek.Wednesday },
+                { "Jueves", DayOfWeek.Thursday },
+                { "Viernes", DayOfWeek.Friday },
+                { "Sábado", DayOfWeek.Saturday },
+            };
+        
+            var targetDay = map[dia];
+        
+            var daysUntil = ((int)targetDay - (int)today.DayOfWeek + 7) % 7;
+            if (daysUntil == 0)
+                daysUntil = 7;
+        
+            var fecha = today.AddDays(daysUntil);
+            return fecha.Add(horaInicio);
+        }
+
+
         [HttpPut("{id}/reprogramar")]
         public async Task<IActionResult> Reprogramar(
             int id,
@@ -416,7 +447,7 @@ namespace WebSastreria.Controllers
             );
         
             // 🧠 calcular fecha real
-            cita.FechaCita = ObtenerFechaReal(
+            cita.FechaCita = CalcularFechaCita(
                 nuevo.Dia,
                 nuevo.HoraInicio
             );
