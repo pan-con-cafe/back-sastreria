@@ -394,7 +394,7 @@ namespace WebSastreria.Controllers
                         anterior.IdHorario,
                         new HorarioDomain
                         {
-                            State = true
+                            Estado = true
                         }
                     );
                 }
@@ -411,7 +411,7 @@ namespace WebSastreria.Controllers
                 nuevo.IdHorario,
                 new HorarioDomain
                 {
-                    State = true
+                    Estado = false
                 }
             );
         
@@ -427,7 +427,7 @@ namespace WebSastreria.Controllers
                 cita.IdCita,
                 new CitaDomain
                 {
-                    FechaCita = nuevaFecha,
+                    FechaCita = cita.FechaCita,
                     IdHorario = nuevo.IdHorario
                 }
             );
