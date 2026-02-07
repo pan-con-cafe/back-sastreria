@@ -27,7 +27,7 @@ public class MensajeContactoController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        mensaje.Fecha = DateTime.Now;
+        mensaje.Fecha = DateTime.UtcNow;
         mensaje.Leido = false;
 
         _context.MensajeContactos.Add(mensaje);
