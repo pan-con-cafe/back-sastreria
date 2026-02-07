@@ -29,6 +29,8 @@ public partial class _dbContext : DbContext
 
     public virtual DbSet<Horario> Horarios { get; set; }
 
+    public virtual DbSet<MensajeContacto> MensajeContactos { get; set; }
+
     public virtual DbSet<Modelo> Modelos { get; set; }
 
     public virtual DbSet<ModeloImagen> ModeloImagen { get; set; }
