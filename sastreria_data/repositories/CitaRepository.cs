@@ -45,7 +45,8 @@ namespace sastreria_data.repositories
                 IdCliente = cita.IdCliente,
                 FechaCita = cita.FechaCita,
                 Estado = cita.Estado,
-                Notas = cita.Notas
+                Notas = cita.Notas,
+                IdHorario = cita.IdHorario
             };
         }
 
