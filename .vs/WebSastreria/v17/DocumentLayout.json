@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "D:\\back-sastreria-main\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{307A2AF3-33D3-4B7E-80DD-21E4D089267C}|WebSastreria\\WebSastreria.csproj|d:\\back-sastreria-main\\websastreria\\controllers\\citacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{307A2AF3-33D3-4B7E-80DD-21E4D089267C}|WebSastreria\\WebSastreria.csproj|solutionrelative:websastreria\\controllers\\citacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C8EDDFF-A6A8-4F27-B349-EDF7022A96EB}|sastreria_domain\\sastreria_domain.csproj|d:\\back-sastreria-main\\sastreria_domain\\entities\\citadomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C8EDDFF-A6A8-4F27-B349-EDF7022A96EB}|sastreria_domain\\sastreria_domain.csproj|solutionrelative:sastreria_domain\\entities\\citadomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C8EDDFF-A6A8-4F27-B349-EDF7022A96EB}|sastreria_domain\\sastreria_domain.csproj|d:\\back-sastreria-main\\sastreria_domain\\requestresponse\\crearcitadesdepedidorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C8EDDFF-A6A8-4F27-B349-EDF7022A96EB}|sastreria_domain\\sastreria_domain.csproj|solutionrelative:sastreria_domain\\requestresponse\\crearcitadesdepedidorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CFBF32FF-BA7C-4089-93FA-5668B7F6D42E}|sastreria_data\\sastreria_data.csproj|d:\\back-sastreria-main\\sastreria_data\\repositories\\horariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFBF32FF-BA7C-4089-93FA-5668B7F6D42E}|sastreria_data\\sastreria_data.csproj|solutionrelative:sastreria_data\\repositories\\horariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CFBF32FF-BA7C-4089-93FA-5668B7F6D42E}|sastreria_data\\sastreria_data.csproj|d:\\back-sastreria-main\\sastreria_data\\repositories\\citarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFBF32FF-BA7C-4089-93FA-5668B7F6D42E}|sastreria_data\\sastreria_data.csproj|solutionrelative:sastreria_data\\repositories\\citarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C8EDDFF-A6A8-4F27-B349-EDF7022A96EB}|sastreria_domain\\sastreria_domain.csproj|d:\\back-sastreria-main\\sastreria_domain\\repositories\\icitarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C8EDDFF-A6A8-4F27-B349-EDF7022A96EB}|sastreria_domain\\sastreria_domain.csproj|solutionrelative:sastreria_domain\\repositories\\icitarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CFBF32FF-BA7C-4089-93FA-5668B7F6D42E}|sastreria_data\\sastreria_data.csproj|d:\\back-sastreria-main\\sastreria_data\\database\\tables\\citum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFBF32FF-BA7C-4089-93FA-5668B7F6D42E}|sastreria_data\\sastreria_data.csproj|solutionrelative:sastreria_data\\database\\tables\\citum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{307A2AF3-33D3-4B7E-80DD-21E4D089267C}|WebSastreria\\WebSastreria.csproj|d:\\back-sastreria-main\\websastreria\\controllers\\citacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{307A2AF3-33D3-4B7E-80DD-21E4D089267C}|WebSastreria\\WebSastreria.csproj|solutionrelative:websastreria\\controllers\\citacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,66 +35,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CrearCitaDesdePedidoRequest.cs",
-              "DocumentMoniker": "D:\\back-sastreria-main\\sastreria_domain\\RequestResponse\\CrearCitaDesdePedidoRequest.cs",
-              "RelativeDocumentMoniker": "sastreria_domain\\RequestResponse\\CrearCitaDesdePedidoRequest.cs",
-              "ToolTip": "D:\\back-sastreria-main\\sastreria_domain\\RequestResponse\\CrearCitaDesdePedidoRequest.cs",
-              "RelativeToolTip": "sastreria_domain\\RequestResponse\\CrearCitaDesdePedidoRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Title": "Citum.cs",
+              "DocumentMoniker": "D:\\back-sastreria-main\\sastreria_data\\database\\tables\\Citum.cs",
+              "RelativeDocumentMoniker": "sastreria_data\\database\\tables\\Citum.cs",
+              "ToolTip": "D:\\back-sastreria-main\\sastreria_data\\database\\tables\\Citum.cs",
+              "RelativeToolTip": "sastreria_data\\database\\tables\\Citum.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCAAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-22T21:57:19.797Z",
+              "WhenOpened": "2026-02-08T00:36:16.548Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CitaDomain.cs",
-              "DocumentMoniker": "D:\\back-sastreria-main\\sastreria_domain\\entities\\CitaDomain.cs",
-              "RelativeDocumentMoniker": "sastreria_domain\\entities\\CitaDomain.cs",
-              "ToolTip": "D:\\back-sastreria-main\\sastreria_domain\\entities\\CitaDomain.cs",
-              "RelativeToolTip": "sastreria_domain\\entities\\CitaDomain.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T16:10:29.324Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ICitaRepository.cs",
-              "DocumentMoniker": "D:\\back-sastreria-main\\sastreria_domain\\repositories\\ICitaRepository.cs",
-              "RelativeDocumentMoniker": "sastreria_domain\\repositories\\ICitaRepository.cs",
-              "ToolTip": "D:\\back-sastreria-main\\sastreria_domain\\repositories\\ICitaRepository.cs",
-              "RelativeToolTip": "sastreria_domain\\repositories\\ICitaRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T00:02:27.015Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CitaController.cs",
-              "DocumentMoniker": "D:\\back-sastreria-main\\WebSastreria\\Controllers\\CitaController.cs",
-              "RelativeDocumentMoniker": "WebSastreria\\Controllers\\CitaController.cs",
-              "ToolTip": "D:\\back-sastreria-main\\WebSastreria\\Controllers\\CitaController.cs",
-              "RelativeToolTip": "WebSastreria\\Controllers\\CitaController.cs",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAAAJ0AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T00:00:42.967Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "CitaRepository.cs",
               "DocumentMoniker": "D:\\back-sastreria-main\\sastreria_data\\repositories\\CitaRepository.cs",
               "RelativeDocumentMoniker": "sastreria_data\\repositories\\CitaRepository.cs",
               "ToolTip": "D:\\back-sastreria-main\\sastreria_data\\repositories\\CitaRepository.cs",
               "RelativeToolTip": "sastreria_data\\repositories\\CitaRepository.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAwwEEAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAcwHwAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-13T02:38:12.781Z",
+              "WhenOpened": "2026-02-08T00:35:42.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HorarioRepository.cs",
+              "DocumentMoniker": "D:\\back-sastreria-main\\sastreria_data\\repositories\\HorarioRepository.cs",
+              "RelativeDocumentMoniker": "sastreria_data\\repositories\\HorarioRepository.cs",
+              "ToolTip": "D:\\back-sastreria-main\\sastreria_data\\repositories\\HorarioRepository.cs",
+              "RelativeToolTip": "sastreria_data\\repositories\\HorarioRepository.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAuwFQAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T00:32:31.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CitaController.cs",
+              "DocumentMoniker": "D:\\back-sastreria-main\\WebSastreria\\Controllers\\CitaController.cs",
+              "RelativeDocumentMoniker": "WebSastreria\\Controllers\\CitaController.cs",
+              "ToolTip": "D:\\back-sastreria-main\\WebSastreria\\Controllers\\CitaController.cs",
+              "RelativeToolTip": "WebSastreria\\Controllers\\CitaController.cs",
+              "ViewState": "AgIAAKIBAAAAAAAAAAAAAJ8BAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T00:18:44.429Z",
               "EditorCaption": ""
             }
           ]

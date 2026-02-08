@@ -72,12 +72,19 @@ namespace sastreria_data.repositories
             var horario = await _context.Horarios.FindAsync(id);
             if (horario == null) return;
 
-            horario.Dia = horarioDomain.Dia;
-            horario.HoraInicio = horarioDomain.HoraInicio;
-            horario.HoraFin = horarioDomain.HoraFin;
-            horario.Estado = horarioDomain.Estado;
+            if (!string.IsNullOrWhiteSpace(horarioDomain.Dia))
+                horario.Dia = horarioDomain.Dia;
 
-            _context.Horarios.Update(horario);
+            if (horarioDomain.HoraInicio != default)
+                horario.HoraInicio = horarioDomain.HoraInicio;
+
+            if (horarioDomain.HoraFin != default)
+                horario.HoraFin = horarioDomain.HoraFin;
+
+            if (horarioDomain.Estado.HasValue)
+                horario.Estado = horarioDomain.Estado;
+
+            //_context.Horarios.Update(horario);
             await _context.SaveChangesAsync();
         }
 

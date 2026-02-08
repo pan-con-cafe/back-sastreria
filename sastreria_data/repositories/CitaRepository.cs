@@ -120,6 +120,11 @@ namespace sastreria_data.repositories
                 );
             }
 
+            if (citaDomain.IdHorario.HasValue)
+            {
+                cita.IdHorario = citaDomain.IdHorario;
+            }
+
             // SOLO si viene estado
             if (citaDomain.Estado.HasValue)
             {
@@ -131,6 +136,9 @@ namespace sastreria_data.repositories
             {
                 cita.Notas = citaDomain.Notas;
             }
+
+            
+
 
 
             //var utcFecha = DateTime.SpecifyKind(citaDomain.FechaCita, DateTimeKind.Utc);

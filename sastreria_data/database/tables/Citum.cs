@@ -30,6 +30,9 @@ public partial class Citum
     public int? PedidoId { get; set; } // FK
     public Pedido? Pedido { get; set; } // Navegación
 
+    [Column("idhorario")]
+    public int? IdHorario { get; set; }
+
     [ForeignKey("IdCliente")]
     [InverseProperty("Cita")]
     public virtual Cliente? IdClienteNavigation { get; set; }
