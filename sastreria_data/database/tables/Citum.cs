@@ -33,6 +33,9 @@ public partial class Citum
     [Column("idhorario")]
     public int? IdHorario { get; set; }
 
+    [ForeignKey("IdHorario")]
+    public virtual Horario? Horario { get; set; }
+
     [ForeignKey("IdCliente")]
     [InverseProperty("Cita")]
     public virtual Cliente? IdClienteNavigation { get; set; }

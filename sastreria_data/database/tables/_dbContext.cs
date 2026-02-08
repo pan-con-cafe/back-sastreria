@@ -62,6 +62,8 @@ public partial class _dbContext : DbContext
             entity.Property(e => e.Estado).HasDefaultValue(true);
 
             entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.Cita).HasConstraintName("FK__Cita__IdCliente__5441852A");
+
+            entity.HasOne(d => d.Horario).WithMany().HasForeignKey(d => d.IdHorario).HasConstraintName("FK__Cita__IdHorario");
         });
 
         modelBuilder.Entity<Cliente>(entity =>

@@ -91,6 +91,9 @@ namespace WebSastreria.Controllers
             if (horario == null)
                 return BadRequest("Horario no válido.");
 
+            if (horario.Estado != true)
+                return BadRequest("Horario no disponible."); // 🔥
+
             // Obtener fecha del próximo día que coincida
             DateTime fechaBase = ObtenerFechaReal(horario.Dia);
 
@@ -101,26 +104,22 @@ namespace WebSastreria.Controllers
             var nuevaCita = new CitaDomain
             {
                 IdCliente = cliente.IdCliente,
+                PedidoId = pedido.IdPedido,
+                IdHorario = horario.IdHorario,
                 FechaCita = fechaCita,
-                PedidoId = pedido.IdPedido, // Asocia el pedido creado
                 Estado = true,
                 Notas = ""
             };
 
             await _citaRepository.CreateAsync(nuevaCita);
 
+            horario.Estado = false;
+            await _horarioRepository.UpdateAsync(horario.IdHorario, horario);
+
             // ✅ OBTENER INFO DEL HORARIO Y MODELO PARA EL CORREO
             string horarioTexto = $"{horario.Dia} de {horario.HoraInicio:hh\\:mm} a {horario.HoraFin:hh\\:mm}";
             string nombreModelo = "Modelo personalizado";
 
-            //if (citaDomain.IdHorario.HasValue)
-            //{
-            //    var horario = await _horarioRepository.GetByIdAsync(citaDomain.IdHorario.Value);
-            //    if (horario != null)
-            //    {
-            //        horarioTexto = $"{horario.Dia} de {horario.HoraInicio:hh\\:mm} a {horario.HoraFin:hh\\:mm}";
-            //    }
-            //}
 
             if (pedido.IdModelo.HasValue)
             {
@@ -239,6 +238,9 @@ namespace WebSastreria.Controllers
             if (horario == null)
                 return BadRequest("Horario no válido.");
 
+            if (horario.Estado != true)
+                return BadRequest("Horario no disponible.");
+
             // 5️⃣ Calcular fecha real de la cita
             DateTime fechaBase = ObtenerFechaReal(horario.Dia);
             DateTime fechaCita = fechaBase.Date + horario.HoraInicio.ToTimeSpan();
@@ -248,12 +250,16 @@ namespace WebSastreria.Controllers
             {
                 IdCliente = cliente.IdCliente,
                 PedidoId = pedido.IdPedido,
+                IdHorario = horario.IdHorario,
                 FechaCita = fechaCita,
                 Estado = true,
                 Notas = ""
             };
 
             await _citaRepository.CreateAsync(nuevaCita);
+
+            horario.Estado = false;
+            await _horarioRepository.UpdateAsync(horario.IdHorario, horario);
             //------------------------------------------
             //await ActualizarEstadoPedido(pedido.IdPedido);
             //------------------------------------------
@@ -393,9 +399,7 @@ namespace WebSastreria.Controllers
             
                 await _pedidoRepository.UpdateAsync(pedido.IdPedido, pedido);
             }
-
             //------------------------------------------------
-            
             return NoContent();
         }
 

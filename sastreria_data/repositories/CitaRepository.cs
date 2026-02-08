@@ -96,8 +96,8 @@ namespace sastreria_data.repositories
                 FechaCita = utcFecha,
                 Estado = citaDomain.Estado,
                 Notas = citaDomain.Notas,
-                PedidoId = citaDomain.PedidoId
-
+                PedidoId = citaDomain.PedidoId,
+                IdHorario = citaDomain.IdHorario
             };
 
             _context.Cita.Add(cita);

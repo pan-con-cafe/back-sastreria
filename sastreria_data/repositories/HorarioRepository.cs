@@ -84,7 +84,7 @@ namespace sastreria_data.repositories
             if (horarioDomain.Estado.HasValue)
                 horario.Estado = horarioDomain.Estado;
 
-            //_context.Horarios.Update(horario);
+            _context.Horarios.Update(horario);
             await _context.SaveChangesAsync();
         }
 
