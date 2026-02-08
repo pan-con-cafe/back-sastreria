@@ -203,7 +203,7 @@ namespace WebSastreria.Controllers
                 idCliente = c.IdCliente,
                 pedidoId = c.PedidoId,
                 fechaCita = c.FechaCita,
-                estado = c.Estado,     // 🔥 CLAVE
+                estado = c.Estado,    
                 notas = c.Notas,
                 idHorario = c.IdHorario
             }));
@@ -342,7 +342,31 @@ namespace WebSastreria.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, CitaDomain citaDomain)
         {
+
+            var citaActual = await _citaRepository.GetByIdAsync(id);
+            if (citaActual == null) return NotFound();
+
             await _citaRepository.UpdateAsync(id, citaDomain);
+
+            if (
+                citaActual.Estado == true &&
+                citaDomain.Estado == false &&
+                citaActual.IdHorario != null
+            )
+            {
+                var horario = await _horarioRepository.GetByIdAsync(citaActual.IdHorario.Value);
+                if (horario != null)
+                {
+                    await _horarioRepository.UpdateAsync(
+                        horario.IdHorario,
+                        new HorarioDomain
+                        {
+                            Estado = true // 🔓 liberar
+                        }
+                    );
+                }
+            }
+
             //------------------------------------------------
             if (!citaDomain.PedidoId.HasValue)
                 return NoContent(); // o BadRequest si prefieres
