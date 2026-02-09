@@ -491,34 +491,49 @@ namespace WebSastreria.Controllers
                 }
             );
 
-            // 📧 Enviar correo de reprogramación
+            // enviar correo
             try
             {
-                var cliente = await _clienteRepository.GetByIdAsync(cita.IdCliente);
-            
+                if (!cita.IdCliente.HasValue)
+                    return BadRequest("Cita no tiene cliente asociado.");
+        
+                var cliente = await _clienteRepository.GetByIdAsync(cita.IdCliente.Value);
+        
                 if (cliente != null)
                 {
                     int? idModelo = null;
-            
                     if (cita.PedidoId.HasValue)
                     {
                         var pedido = await _pedidoRepository.GetByIdAsync(cita.PedidoId.Value);
                         idModelo = pedido?.IdModelo;
                     }
-            
-                    await EnviarCorreoCitaAsync(
-                        cliente,
-                        cita.FechaCita,   // 👈 NUEVA fecha
-                        nuevo,            // 👈 NUEVO horario
-                        idModelo
+        
+                    string nombreCompleto = $"{cliente.Nombre} {cliente.Apellido}";
+                    string horarioTexto = $"{nuevo.Dia} de {nuevo.HoraInicio:hh\\:mm} a {nuevo.HoraFin:hh\\:mm}";
+                    string nombreModelo = "Modelo personalizado";
+        
+                    if (idModelo.HasValue)
+                    {
+                        var modelo = await _modeloRepository.GetByIdAsync(idModelo.Value);
+                        if (modelo != null)
+                            nombreModelo = modelo.Nombre;
+                    }
+        
+                    await _emailService.EnviarCorreoReservaAsync(
+                        cliente.Correo,
+                        nombreCompleto,
+                        cita.FechaCita,
+                        horarioTexto,
+                        nombreModelo
                     );
+        
+                    _logger.LogInformation($"Correo de reprogramación enviado a {cliente.Correo}");
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogWarning($"Error al enviar correo de reprogramación: {ex.Message}");
             }
-
         
             return NoContent();
         }
