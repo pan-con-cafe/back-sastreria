@@ -490,6 +490,35 @@ namespace WebSastreria.Controllers
                     IdHorario = nuevo.IdHorario
                 }
             );
+
+            // 📧 Enviar correo de reprogramación
+            try
+            {
+                var cliente = await _clienteRepository.GetByIdAsync(cita.IdCliente);
+            
+                if (cliente != null)
+                {
+                    int? idModelo = null;
+            
+                    if (cita.PedidoId.HasValue)
+                    {
+                        var pedido = await _pedidoRepository.GetByIdAsync(cita.PedidoId.Value);
+                        idModelo = pedido?.IdModelo;
+                    }
+            
+                    await EnviarCorreoCitaAsync(
+                        cliente,
+                        cita.FechaCita,   // 👈 NUEVA fecha
+                        nuevo,            // 👈 NUEVO horario
+                        idModelo
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning($"Error al enviar correo de reprogramación: {ex.Message}");
+            }
+
         
             return NoContent();
         }
