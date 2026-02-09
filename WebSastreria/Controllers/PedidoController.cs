@@ -93,17 +93,19 @@ namespace WebSastreria.Controllers
             return Ok();
         }*/
 
-        [HttpPatch("{id}/estado")]
-        public async Task<IActionResult> CambiarEstado(int id, int nuevoEstado)
+        [HttpPatch("{id}/cerrar")]
+        public async Task<IActionResult> CerrarPedido(int id)
         {
             var pedido = await _pedidoRepository.GetByIdAsync(id);
             if (pedido == null) return NotFound();
         
-            pedido.IdEstado = nuevoEstado;
+            pedido.IdEstado = 3; // Cerrado
+            pedido.FechaEntrega = DateTime.UtcNow; // <-- Guardamos fecha y hora actual
         
             await _pedidoRepository.UpdateAsync(id, pedido);
             return Ok();
         }
+        
 
 
         [HttpPut("{id}")]
