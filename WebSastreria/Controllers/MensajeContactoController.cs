@@ -74,7 +74,7 @@ public class MensajeContactoController : ControllerBase
         var mensaje = await _context.MensajeContacto.FindAsync(id);
         if (mensaje == null) return NotFound();
     
-        _context.Mensajes.Remove(mensaje);
+        _context.MensajeContactos.Remove(mensaje);
         await _context.SaveChangesAsync();
         
         return NoContent();
