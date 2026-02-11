@@ -68,4 +68,17 @@ public class MensajeContactoController : ControllerBase
         return NoContent();
     }
 
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteMensaje(int id)
+    {
+        var mensaje = await _context.MensajeContacto.FindAsync(id);
+        if (mensaje == null) return NotFound();
+    
+        _context.Mensajes.Remove(mensaje);
+        await _context.SaveChangesAsync();
+        
+        return NoContent();
+    }
+
+
 }
